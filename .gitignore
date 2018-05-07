@@ -1,0 +1,14 @@
+/*
+!.gitignore
+!.collabignore
+
+
+# Unity3D related
+!/Assets
+!/ProjectSettings
+*.unitypackage
+
+
+# Mac-OSX related
+.DS_Store
+*.zip
