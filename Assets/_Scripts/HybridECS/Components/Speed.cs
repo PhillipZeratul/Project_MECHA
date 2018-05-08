@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 
 
-public class Speed : MonoBehaviour
+namespace ProjectMecha
 {
-    public float value;
+    public class Speed : MonoBehaviour
+    {
+        public float Value;
+    }
 }

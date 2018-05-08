@@ -4,18 +4,22 @@ using Unity.Entities;
 
 namespace ProjectMecha
 {
-    public class PlayerInputSystem : ComponentSystem
+    public class GravitySystem : ComponentSystem
     {
         private struct Group
         {
-            public PlayerInput PlayerInput;
+            public Speed Speed;
+            public Gravity Gravity;
         }
 
         protected override void OnUpdate()
         {
+            float deltaTime = Time.deltaTime;
+            float deltaTimeSquared = deltaTime * deltaTime;
+
             foreach (var entity in GetEntities<Group>())
             {
-                entity.PlayerInput.Horizontal = Input.GetAxis("Horizontal");
+                
             }
         }
     }

@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 
 
-public class PlayerInput : MonoBehaviour
+namespace ProjectMecha
 {
-    public float horizontal;
+    public class PlayerInput : MonoBehaviour
+    {
+        public float Horizontal;
+    }
 }

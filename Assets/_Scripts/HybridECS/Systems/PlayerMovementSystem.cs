@@ -1,25 +1,37 @@
 ﻿using UnityEngine;
 using Unity.Entities;
+using Unity.Mathematics;
 
 
-public class PlayerMovementSystem : ComponentSystem
+namespace ProjectMecha
 {
-    private struct Group
+    public class PlayerMovementSystem : ComponentSystem
     {
-        public Transform transform;
-        public PlayerInput playerInput;
-        public Speed speed;
-    }
-
-    protected override void OnUpdate()
-    {
-        float deltaTime = Time.deltaTime;
-
-        foreach (var entity in GetEntities<Group>())
+        private struct PlayerData
         {
-            Vector3 position = entity.transform.position;
-            position.x += entity.speed.value * entity.playerInput.horizontal * deltaTime;
-            entity.transform.position = position;
+            public int Length;
+            public GameObjectArray GameObject;
+            public ComponentArray<Position2D> Position;
+            public ComponentArray<Heading2D> Heading;
+            public ComponentArray<PlayerInput> PlayerInput;
+            public ComponentArray<Speed> Speed;
+        } 
+        [Inject] private PlayerData playerData;
+
+
+        protected override void OnUpdate()
+        {
+            if (playerData.Length == 0)
+                return;
+            
+            float deltaTime = Time.deltaTime;
+
+            for (int i = 0; i < playerData.Length; i++)
+            {
+                float2 position = playerData.Position[i].Value;
+                position.x += playerData.Speed[i].Value * playerData.PlayerInput[i].Horizontal * deltaTime;
+                playerData.Position[i].Value = position;
+            }
         }
     }
 }
