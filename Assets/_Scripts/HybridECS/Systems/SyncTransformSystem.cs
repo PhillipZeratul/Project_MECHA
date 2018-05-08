@@ -15,6 +15,7 @@ namespace ProjectMecha
             public Transform Transform;
         }
 
+
         protected override void OnUpdate()
         {
             foreach (var entity in GetEntities<Data>())
@@ -24,7 +25,7 @@ namespace ProjectMecha
                 float3 oriScale = entity.Transform.localScale;
 
                 entity.Transform.position = new float3(position.x, position.y, 0f);
-                entity.Transform.localScale = new float3(heading * oriScale.x, oriScale.y, oriScale.z);
+                entity.Transform.localScale = new float3(heading * math.abs(oriScale.x), oriScale.y, oriScale.z);
             }
         }
     }

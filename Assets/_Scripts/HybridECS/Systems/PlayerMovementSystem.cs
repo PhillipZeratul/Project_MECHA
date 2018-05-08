@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using Unity.Entities;
-using Unity.Mathematics;
 
 
 namespace ProjectMecha
@@ -14,7 +13,7 @@ namespace ProjectMecha
             public ComponentArray<Position2D> Position;
             public ComponentArray<Heading2D> Heading;
             public ComponentArray<PlayerInput> PlayerInput;
-            public ComponentArray<Speed> Speed;
+            public ComponentArray<Velocity> Velocity;
         } 
         [Inject] private PlayerData playerData;
 
@@ -28,9 +27,14 @@ namespace ProjectMecha
 
             for (int i = 0; i < playerData.Length; i++)
             {
-                float2 position = playerData.Position[i].Value;
-                position.x += playerData.Speed[i].Value * playerData.PlayerInput[i].Horizontal * deltaTime;
-                playerData.Position[i].Value = position;
+                Position2D position = playerData.Position[i];
+                float horizontal = playerData.PlayerInput[i].Horizontal;
+                position.Value.x += playerData.Velocity[i].Modifier.x * horizontal * deltaTime;
+
+                if (horizontal > 0)
+                    playerData.Heading[i].isRight = true;
+                else if (horizontal < 0)
+                    playerData.Heading[i].isRight = false;
             }
         }
     }
