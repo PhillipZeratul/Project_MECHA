@@ -8,5 +8,6 @@ namespace ProjectMecha
     {
         public float2 Modifier;
         public float2 Value;
+        public bool Grounded;
     }
 }

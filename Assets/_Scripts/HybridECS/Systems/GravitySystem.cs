@@ -20,7 +20,7 @@ namespace ProjectMecha
         private float minMoveThres = 0.001f;
         private RaycastHit2D[] raycastHit2Ds = new RaycastHit2D[16];
         private float shellRadius = 0.01f;
-        private float minNormalY = 0.65f;
+        private float minGroundNormalY = 0.65f;
 
 
         protected override void OnUpdate()
@@ -44,9 +44,12 @@ namespace ProjectMecha
 
                 for (int i = 0; i < count; i++)
                 {
-                    Vector2 currentNormal = raycastHit2Ds[i].normal;
-                    if (currentNormal.y > minNormalY)
+                    if (raycastHit2Ds[i].normal.y > minGroundNormalY)
+                    {
+                        group.Gravity[index].Grounded = true;
                         move.y = 0f;
+                        group.Velocity[index].Value.y = 0f;
+                    }
                 }
 
                 group.Position[index].Value += move;

@@ -6,6 +6,7 @@ using Unity.Mathematics;
 
 namespace ProjectMecha
 {
+    [ExecuteInEditMode]
     public class SyncTransformSystem : ComponentSystem
     {
         private struct Data
@@ -18,14 +19,25 @@ namespace ProjectMecha
 
         protected override void OnUpdate()
         {
-            foreach (var entity in GetEntities<Data>())
+            if (Application.isEditor && !Application.isPlaying)
             {
-                float2 position = entity.Position.Value;
-                int heading = entity.Heading.isRight ? 1 : -1;
-                float3 oriScale = entity.Transform.localScale;
+                foreach (var entity in GetEntities<Data>())
+                {
+                    entity.Position.Value = new float2(entity.Transform.position.x, entity.Transform.position.y);
+                    entity.Heading.isRight = entity.Transform.localScale.x > 0;
+                }
+            }
+            else
+            {
+                foreach (var entity in GetEntities<Data>())
+                {
+                    float2 position = entity.Position.Value;
+                    int heading = entity.Heading.isRight ? 1 : -1;
+                    float3 oriScale = entity.Transform.localScale;
 
-                entity.Transform.position = new float3(position.x, position.y, 0f);
-                entity.Transform.localScale = new float3(heading * math.abs(oriScale.x), oriScale.y, oriScale.z);
+                    entity.Transform.position = new float3(position.x, position.y, 0f);
+                    entity.Transform.localScale = new float3(heading * math.abs(oriScale.x), oriScale.y, oriScale.z);
+                }
             }
         }
     }

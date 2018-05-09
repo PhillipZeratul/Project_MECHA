@@ -14,6 +14,7 @@ namespace ProjectMecha
             public ComponentArray<Heading2D> Heading;
             public ComponentArray<PlayerInput> PlayerInput;
             public ComponentArray<Velocity> Velocity;
+            public ComponentArray<Gravity> Gravity;
         } 
         [Inject] private PlayerData playerData;
 
@@ -27,14 +28,20 @@ namespace ProjectMecha
 
             for (int i = 0; i < playerData.Length; i++)
             {
-                Position2D position = playerData.Position[i];
                 float horizontal = playerData.PlayerInput[i].Horizontal;
-                position.Value.x += playerData.Velocity[i].Modifier.x * horizontal * deltaTime;
+                playerData.Velocity[i].Value.x = playerData.Velocity[i].Modifier.x * horizontal;
+                playerData.Position[i].Value.x += playerData.Velocity[i].Value.x * deltaTime;
 
                 if (horizontal > 0)
                     playerData.Heading[i].isRight = true;
                 else if (horizontal < 0)
                     playerData.Heading[i].isRight = false;
+
+                if (playerData.Gravity[i].Grounded && playerData.PlayerInput[i].Jump)
+                {
+                    playerData.Gravity[i].Grounded = false;
+                    playerData.Velocity[i].Value.y = playerData.Velocity[i].Modifier.y;
+                }
             }
         }
     }

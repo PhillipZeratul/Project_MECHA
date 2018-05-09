@@ -16,6 +16,7 @@ namespace ProjectMecha
             foreach (var entity in GetEntities<Group>())
             {
                 entity.PlayerInput.Horizontal = Input.GetAxis("Horizontal");
+                entity.PlayerInput.Jump = Input.GetButtonDown("Jump");
             }
         }
     }
