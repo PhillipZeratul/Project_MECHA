@@ -25,6 +25,7 @@ namespace ProjectMecha
         private float minCollideNormal = 0.65f;
 
 
+        // FIXME:~ Fall down not correct.
         protected override void OnUpdate()
         {
             float deltaTime = Time.deltaTime;

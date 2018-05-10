@@ -4,7 +4,7 @@ using Unity.Entities;
 
 namespace ProjectMecha
 {
-    [ExecuteInEditMode]
+    [UpdateAfter(typeof(CalculateCameraBoundSystem))]
     public class FollowPlayerCameraSystem : ComponentSystem
     {
         private struct CameraData
@@ -32,7 +32,19 @@ namespace ProjectMecha
 
             for (int i = 0; i < player.Length; i++)
             {
-                camera.Position[i].Value = player.Position[i].Value;
+                // TODO:~ Follow Player.
+                if (player.Heading[i].isRight && player.Position[i].Value.x > camera.Position[i].Value.x + camera.Camera[i].rightBound)
+                {
+                    // TODO:~ Interpolate
+                    camera.Position[i].Value.x = player.Position[i].Value.x + camera.Camera[i].leftBound;
+                }
+                else if (!player.Heading[i].isRight && player.Position[i].Value.x < camera.Position[i].Value.x - camera.Camera[i].leftBound)
+                {
+                    // TODO:~ Interpolate
+                    camera.Position[i].Value.x = player.Position[i].Value.x - camera.Camera[i].rightBound;
+                }
+
+                camera.Position[i].Value.y = player.Position[i].Value.y + camera.Camera[i].bottomBound;
             }
         }
     }
