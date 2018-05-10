@@ -27,9 +27,6 @@ namespace ProjectMecha
 
         protected override void OnUpdate()
         {
-            if (group.Length <= 0)
-                return;
-            
             float deltaTime = Time.deltaTime;
              
             for (int i = 0; i < group.Length; i++)
