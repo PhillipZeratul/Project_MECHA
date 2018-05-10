@@ -5,7 +5,7 @@ namespace ProjectMecha
 {
     public class Heading2D : MonoBehaviour
     {
-        [HideInInspector]
+        //[HideInInspector]
         public bool isRight = true;
     }
 }

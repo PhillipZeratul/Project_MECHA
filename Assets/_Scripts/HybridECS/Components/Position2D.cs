@@ -4,6 +4,6 @@ using Unity.Mathematics;
 
 public class Position2D : MonoBehaviour
 {
-    [HideInInspector]
+    //[HideInInspector]
     public float2 Value;
 }

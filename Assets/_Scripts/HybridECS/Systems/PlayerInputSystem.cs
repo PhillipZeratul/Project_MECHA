@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Unity.Entities;
+using Unity.Collections;
 
 
 namespace ProjectMecha
@@ -8,7 +9,7 @@ namespace ProjectMecha
     {
         private struct Group
         {
-            public PlayerInput PlayerInput;
+            [ReadOnly] public PlayerInput PlayerInput;
         }
 
         protected override void OnUpdate()
