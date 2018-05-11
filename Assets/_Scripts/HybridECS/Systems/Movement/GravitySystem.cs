@@ -5,6 +5,7 @@ using Unity.Mathematics;
 
 namespace ProjectMecha
 {
+    [UpdateBefore(typeof(CollideSystem))]
     public class GravitySystem : ComponentSystem
     {
         private struct Group
@@ -24,11 +25,6 @@ namespace ProjectMecha
 
             for(int i = 0; i < group.Length; i++)
             {
-                if (group.Velocity[i].Grounded)
-                {
-                    group.Velocity[i].Value.y = 0f;
-                    continue;
-                }
                 group.Velocity[i].Value += group.Gravity[i].Modifier * new float2(Physics2D.gravity.x, Physics2D.gravity.y) * deltaTime;
             }
         }
