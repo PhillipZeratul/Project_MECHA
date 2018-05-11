@@ -5,6 +5,7 @@ public class FollowPlayerCamera : MonoBehaviour
 {
     public float lerpStartThres = 1f;
     public float lerpStopThres = 0.01f;
+    public float lerpSpeed = 0.2f;
     public bool isLerping;
 
     public float leftPortion;

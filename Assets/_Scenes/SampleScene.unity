@@ -214,7 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99430aaa65edf4d2290bc5420918b044, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lerpStartThres: 1
+  lerpStartThres: 2
   lerpStopThres: 0.01
   isLerping: 0
   leftPortion: 0.5

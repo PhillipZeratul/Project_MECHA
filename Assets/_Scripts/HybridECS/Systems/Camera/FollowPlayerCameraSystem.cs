@@ -39,12 +39,11 @@ namespace ProjectMecha
                     destination.x = player.Position[i].Value.x + camera.Camera[i].leftBound;
                 else
                     destination.x = player.Position[i].Value.x - camera.Camera[i].rightBound;
-
                 destination.y = player.Position[i].Value.y + camera.Camera[i].bottomBound;
 
                 float distanceSquared = math.lengthSquared(destination - camera.Position[i].Value);
 
-                if (distanceSquared > camera.Camera[i].lerpStartThres)
+                if (distanceSquared > camera.Camera[i].lerpStartThres)               
                     camera.Camera[i].isLerping = true;
 
                 if (camera.Camera[i].isLerping)
@@ -55,7 +54,7 @@ namespace ProjectMecha
                         camera.Camera[i].isLerping = false;
                     }
                     else
-                        camera.Position[i].Value = math.lerp(camera.Position[i].Value, destination, 0.2f);
+                        camera.Position[i].Value = math.lerp(camera.Position[i].Value, destination, camera.Camera[i].lerpSpeed);
                 }
                 else
                     camera.Position[i].Value = destination;
