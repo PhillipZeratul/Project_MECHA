@@ -24,9 +24,7 @@ namespace ProjectMecha
             float2 deltaTime = Time.deltaTime;
 
             for(int i = 0; i < group.Length; i++)
-            {
                 group.Velocity[i].Value += group.Gravity[i].Modifier * new float2(Physics2D.gravity.x, Physics2D.gravity.y) * deltaTime;
-            }
         }
     }
 }

@@ -26,9 +26,6 @@ namespace ProjectMecha
         [Inject] PlayerData player;
 
 
-        private float lerpThres = 0.01f;
-
-
         protected override void OnUpdate()
         {
             if (camera.Length > player.Length)
@@ -45,10 +42,23 @@ namespace ProjectMecha
 
                 destination.y = player.Position[i].Value.y + camera.Camera[i].bottomBound;
 
-                if (math.lengthSquared(destination - camera.Position[i].Value) < lerpThres)
-                    camera.Position[i].Value = destination;
+                float distanceSquared = math.lengthSquared(destination - camera.Position[i].Value);
+
+                if (distanceSquared > camera.Camera[i].lerpStartThres)
+                    camera.Camera[i].isLerping = true;
+
+                if (camera.Camera[i].isLerping)
+                {
+                    if (distanceSquared < camera.Camera[i].lerpStopThres)
+                    {
+                        camera.Position[i].Value = destination;
+                        camera.Camera[i].isLerping = false;
+                    }
+                    else
+                        camera.Position[i].Value = math.lerp(camera.Position[i].Value, destination, 0.2f);
+                }
                 else
-                    camera.Position[i].Value = math.lerp(camera.Position[i].Value, destination, 0.2f);
+                    camera.Position[i].Value = destination;
             }
         }
     }
