@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Unity.Entities;
+using Unity.Mathematics;
 
 
 namespace ProjectMecha
@@ -25,6 +26,9 @@ namespace ProjectMecha
         [Inject] PlayerData player;
 
 
+        private float lerpThres = 0.01f;
+
+
         protected override void OnUpdate()
         {
             if (camera.Length > player.Length)
@@ -32,19 +36,19 @@ namespace ProjectMecha
 
             for (int i = 0; i < player.Length; i++)
             {
-                // TODO:~ Follow Player.
-                if (player.Heading[i].isRight && player.Position[i].Value.x > camera.Position[i].Value.x + camera.Camera[i].rightBound)
-                {
-                    // TODO:~ Interpolate
-                    camera.Position[i].Value.x = player.Position[i].Value.x + camera.Camera[i].leftBound;
-                }
-                else if (!player.Heading[i].isRight && player.Position[i].Value.x < camera.Position[i].Value.x - camera.Camera[i].leftBound)
-                {
-                    // TODO:~ Interpolate
-                    camera.Position[i].Value.x = player.Position[i].Value.x - camera.Camera[i].rightBound;
-                }
+                float2 destination;
 
-                camera.Position[i].Value.y = player.Position[i].Value.y + camera.Camera[i].bottomBound;
+                if (player.Heading[i].isRight)
+                    destination.x = player.Position[i].Value.x + camera.Camera[i].leftBound;
+                else
+                    destination.x = player.Position[i].Value.x - camera.Camera[i].rightBound;
+
+                destination.y = player.Position[i].Value.y + camera.Camera[i].bottomBound;
+
+                if (math.lengthSquared(destination - camera.Position[i].Value) < lerpThres)
+                    camera.Position[i].Value = destination;
+                else
+                    camera.Position[i].Value = math.lerp(camera.Position[i].Value, destination, 0.2f);
             }
         }
     }
