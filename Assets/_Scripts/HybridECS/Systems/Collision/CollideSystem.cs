@@ -52,7 +52,7 @@ namespace ProjectMecha
                     // Vertical Up Collision
                     else if (-raycastHit2Ds[j].normal.y > minCollideNormal && group.Velocity[i].Value.y > 0f)
                     {
-                        if (raycastHit2Ds[j].transform.gameObject.tag.GetHashCode() != TagManager.Platform)
+                        if (raycastHit2Ds[j].transform.gameObject.tag != TagManager.Platform)
                         {
                             group.Velocity[i].Value.y = 0f;
                             group.Position[i].Value.y -= raycastHit2Ds[j].distance * raycastHit2Ds[j].normal.y;
@@ -61,7 +61,7 @@ namespace ProjectMecha
                     // Horizontal Collision
                     else if (-raycastHit2Ds[j].normal.x * math.sign(group.Velocity[i].Value.x) > minCollideNormal)
                     {
-                        if (raycastHit2Ds[j].transform.gameObject.tag.GetHashCode() != TagManager.Platform)
+                        if (raycastHit2Ds[j].transform.gameObject.tag != TagManager.Platform)
                         {
                             group.Velocity[i].Value.x = 0f;
                             group.Position[i].Value.x -= raycastHit2Ds[j].distance * raycastHit2Ds[j].normal.x;
