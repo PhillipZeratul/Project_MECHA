@@ -40,18 +40,36 @@ namespace ProjectMecha
                     // Move the object to collide point if collision is detected,
                     // but object is adjacent to collider, collision system will always report collision,
                     // so check if the object is still moving to the collider with the sign of velocity and normal.
+
+                    // Vertical Down Collision
                     if (raycastHit2Ds[j].normal.y > minCollideNormal && group.Velocity[i].Value.y < 0f)
                     {
                         group.Velocity[i].Grounded = true;
                         group.Velocity[i].Value.y = 0f;
                         group.Position[i].Value.y -= raycastHit2Ds[j].distance * raycastHit2Ds[j].normal.y;
                     }
+                    // Vertical Up Collision
+                    else if (-raycastHit2Ds[j].normal.y > minCollideNormal && group.Velocity[i].Value.y > 0f)
+                    {
+                        if (raycastHit2Ds[j].transform.gameObject.layer != LayerMask.NameToLayer("Platform"))
+                        {
+                            group.Velocity[i].Value.y = 0f;
+                            group.Position[i].Value.y -= raycastHit2Ds[j].distance * raycastHit2Ds[j].normal.y;
+                        }
+                    }
+                    // Horizontal Collision
                     else if (-raycastHit2Ds[j].normal.x * math.sign(group.Velocity[i].Value.x) > minCollideNormal)
                     {
-                        group.Velocity[i].Value.x = 0f;
-                        group.Position[i].Value.x -= raycastHit2Ds[j].distance * raycastHit2Ds[j].normal.x;
+                        if (raycastHit2Ds[j].transform.gameObject.layer != LayerMask.NameToLayer("Platform"))
+                        {
+                            group.Velocity[i].Value.x = 0f;
+                            group.Position[i].Value.x -= raycastHit2Ds[j].distance * raycastHit2Ds[j].normal.x;
+                        }
                     }
                 }
+
+                if (!CommonUtility.NearlyEqual(group.Velocity[i].Value.y, 0f))
+                    group.Velocity[i].Grounded = false;
             }
         }
     }

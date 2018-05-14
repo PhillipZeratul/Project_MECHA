@@ -245,7 +245,8 @@ GameObject:
   - component: {fileID: 998203009}
   - component: {fileID: 998203008}
   - component: {fileID: 998203007}
-  m_Layer: 0
+  - component: {fileID: 998203010}
+  m_Layer: 8
   m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -258,7 +259,7 @@ BoxCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 998203006}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -329,12 +330,29 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 998203006}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.552, y: -4.701, z: 0}
+  m_LocalPosition: {x: -3.552, y: -4.92, z: 0}
   m_LocalScale: {x: 785.9162, y: 22.012518, z: 1}
   m_Children: []
   m_Father: {fileID: 1937698695}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!68 &998203010
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 998203006}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.02, y: 0.0190027}
+  - {x: 0.020088704, y: 0.020586284}
 --- !u!1 &1053532917
 GameObject:
   m_ObjectHideFlags: 0
@@ -345,7 +363,7 @@ GameObject:
   - component: {fileID: 1053532918}
   - component: {fileID: 1053532920}
   - component: {fileID: 1053532919}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ground_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -445,7 +463,7 @@ GameObject:
   - component: {fileID: 1333798972}
   - component: {fileID: 1333798974}
   - component: {fileID: 1333798973}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Wall_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -459,8 +477,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1333798971}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -12.08, y: -2.45, z: 0}
-  m_LocalScale: {x: 22.767149, y: 123.1707, z: 1}
+  m_LocalPosition: {x: -12.08, y: -2.113, z: 0}
+  m_LocalScale: {x: 22.767149, y: 140.01408, z: 1}
   m_Children: []
   m_Father: {fileID: 1937698695}
   m_RootOrder: 4
@@ -545,7 +563,7 @@ GameObject:
   - component: {fileID: 1653991019}
   - component: {fileID: 1653991021}
   - component: {fileID: 1653991020}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Wall_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -559,8 +577,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1653991018}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 19.25, y: -6.36, z: 0}
-  m_LocalScale: {x: 22.767149, y: 123.1707, z: 1}
+  m_LocalPosition: {x: 19.25, y: -4.077, z: 0}
+  m_LocalScale: {x: 22.767149, y: 237.34686, z: 1}
   m_Children: []
   m_Father: {fileID: 1937698695}
   m_RootOrder: 3
@@ -645,7 +663,7 @@ GameObject:
   - component: {fileID: 1742583244}
   - component: {fileID: 1742583243}
   - component: {fileID: 1742583242}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Ceiling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -729,8 +747,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1742583241}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.584, y: -0.19999999, z: 0}
-  m_LocalScale: {x: 846.6378, y: 22.012518, z: 1}
+  m_LocalPosition: {x: 1.01, y: 0.67, z: 0}
+  m_LocalScale: {x: 1030.1957, y: 25.747192, z: 1}
   m_Children: []
   m_Father: {fileID: 1937698695}
   m_RootOrder: 2
@@ -891,7 +909,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1943972626}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.7, y: -3.67, z: -0.013671875}
+  m_LocalPosition: {x: -3.7, y: -4.28, z: -0.013671875}
   m_LocalScale: {x: 51.02735, y: 72.65702, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -975,7 +993,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Value:
     x: -3.7
-    y: -3.67
+    y: -4.28
 --- !u!114 &1943972637
 MonoBehaviour:
   m_ObjectHideFlags: 0
