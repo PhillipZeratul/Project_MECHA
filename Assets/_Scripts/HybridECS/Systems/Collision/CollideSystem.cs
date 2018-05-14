@@ -35,6 +35,7 @@ namespace ProjectMecha
                 float distance = math.length(group.Velocity[i].Value * deltaTime);
                 int count = group.RigidBody[i].Cast(group.Velocity[i].Value, group.Collidable[i].ContactFilter2D, raycastHit2Ds, distance + shellRadius);
 
+                // TODO:~ May have bug when collide with multiple objects
                 for (int j = 0; j < count; j++)
                 {
                     // Move the object to collide point if collision is detected,
@@ -51,7 +52,7 @@ namespace ProjectMecha
                     // Vertical Up Collision
                     else if (-raycastHit2Ds[j].normal.y > minCollideNormal && group.Velocity[i].Value.y > 0f)
                     {
-                        if (raycastHit2Ds[j].transform.gameObject.layer != LayerMask.NameToLayer("Platform"))
+                        if (raycastHit2Ds[j].transform.gameObject.tag.GetHashCode() != TagManager.Platform)
                         {
                             group.Velocity[i].Value.y = 0f;
                             group.Position[i].Value.y -= raycastHit2Ds[j].distance * raycastHit2Ds[j].normal.y;
@@ -60,7 +61,7 @@ namespace ProjectMecha
                     // Horizontal Collision
                     else if (-raycastHit2Ds[j].normal.x * math.sign(group.Velocity[i].Value.x) > minCollideNormal)
                     {
-                        if (raycastHit2Ds[j].transform.gameObject.layer != LayerMask.NameToLayer("Platform"))
+                        if (raycastHit2Ds[j].transform.gameObject.tag.GetHashCode() != TagManager.Platform)
                         {
                             group.Velocity[i].Value.x = 0f;
                             group.Position[i].Value.x -= raycastHit2Ds[j].distance * raycastHit2Ds[j].normal.x;
