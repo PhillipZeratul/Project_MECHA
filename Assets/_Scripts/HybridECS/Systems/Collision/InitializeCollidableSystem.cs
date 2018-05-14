@@ -4,6 +4,7 @@ using Unity.Entities;
 
 namespace ProjectMecha
 {
+    [UpdateInGroup(typeof(CalculatePosition))]
     public class InitializeCollidableSystem : ComponentSystem
     {
         private struct Group

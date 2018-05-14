@@ -5,6 +5,7 @@ using Unity.Collections;
 
 namespace ProjectMecha
 {
+    [UpdateInGroup(typeof(CalculatePosition))]
     public class PlayerInputSystem : ComponentSystem
     {
         private struct Group

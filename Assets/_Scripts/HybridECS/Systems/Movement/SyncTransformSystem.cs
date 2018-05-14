@@ -6,6 +6,7 @@ using Unity.Mathematics;
 namespace ProjectMecha
 {
     [ExecuteInEditMode]
+    [UpdateInGroup(typeof(UpdateTransform))]
     public class SyncTransformSystem : ComponentSystem
     {
         private struct GroupWithHeading

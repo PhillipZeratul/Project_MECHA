@@ -6,6 +6,7 @@ using Unity.Collections;
 
 namespace ProjectMecha
 {
+    [UpdateInGroup(typeof(CalculatePosition))]
     [UpdateAfter(typeof(CalculateVelocitySystem))]
     public class CollideSystem : ComponentSystem
     {

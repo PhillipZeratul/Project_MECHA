@@ -6,6 +6,7 @@ using Unity.Mathematics;
 
 namespace ProjectMecha
 {
+    [UpdateInGroup(typeof(CalculatePosition))]
     [UpdateAfter(typeof(CollideSystem))]
     public class MovementSystem : ComponentSystem
     {

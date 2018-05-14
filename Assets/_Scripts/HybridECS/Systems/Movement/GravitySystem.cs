@@ -5,6 +5,7 @@ using Unity.Mathematics;
 
 namespace ProjectMecha
 {
+    [UpdateInGroup(typeof(CalculatePosition))]
     [UpdateBefore(typeof(CollideSystem))]
     public class GravitySystem : ComponentSystem
     {

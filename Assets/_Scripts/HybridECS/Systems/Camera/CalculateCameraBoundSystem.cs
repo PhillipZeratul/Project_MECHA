@@ -5,6 +5,7 @@ using Unity.Entities;
 namespace ProjectMecha
 {
     [ExecuteInEditMode]
+    [UpdateInGroup(typeof(CalculatePosition))]
     public class CalculateCameraBoundSystem : ComponentSystem
     {
         private struct CameraData

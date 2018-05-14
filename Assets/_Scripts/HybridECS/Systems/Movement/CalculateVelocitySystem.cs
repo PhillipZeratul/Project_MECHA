@@ -4,6 +4,7 @@ using Unity.Collections;
 
 namespace ProjectMecha
 {
+    [UpdateInGroup(typeof(CalculatePosition))]
     [UpdateAfter(typeof(PlayerInput))]
     public class CalculateVelocitySystem : ComponentSystem
     {

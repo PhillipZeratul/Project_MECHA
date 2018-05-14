@@ -5,6 +5,7 @@ using Unity.Mathematics;
 
 namespace ProjectMecha
 {
+    [UpdateInGroup(typeof(CalculatePosition))]
     [UpdateAfter(typeof(CalculateCameraBoundSystem))]
     public class FollowPlayerCameraSystem : ComponentSystem
     {
@@ -43,7 +44,7 @@ namespace ProjectMecha
 
                 float distanceSquared = math.lengthSquared(destination - camera.Position[i].Value);
 
-                if (distanceSquared > camera.Camera[i].lerpStartThres)               
+                if (distanceSquared > camera.Camera[i].lerpStartThres)              
                     camera.Camera[i].isLerping = true;
 
                 if (camera.Camera[i].isLerping)
