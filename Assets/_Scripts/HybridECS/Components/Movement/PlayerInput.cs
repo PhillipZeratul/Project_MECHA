@@ -7,5 +7,6 @@ namespace ProjectMecha
     {
         public float Horizontal;
         public bool Jump;
+        public bool Down;
     }
 }

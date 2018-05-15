@@ -18,6 +18,7 @@ namespace ProjectMecha
             foreach (var entity in GetEntities<Group>())
             {
                 entity.PlayerInput.Horizontal = Input.GetAxis("Horizontal");
+                entity.PlayerInput.Down = Input.GetAxis("Vertical") < -0.8;
                 entity.PlayerInput.Jump = Input.GetButtonDown("Jump");
             }
         }

@@ -24,7 +24,7 @@ namespace ProjectMecha
             {
                 var contactFilter2D = group.Collidable[i].ContactFilter2D;
                 contactFilter2D.useTriggers = false;
-                contactFilter2D.SetLayerMask(Physics2D.GetLayerCollisionMask(group.GameObject[i].layer));
+                contactFilter2D.SetLayerMask(LayerManager.PlayerCollsionMask());
                 contactFilter2D.useLayerMask = true;
                 PostUpdateCommands.RemoveComponent<InitializeCollidable>(group.Entity[i]);
                 GameObject.Destroy(group.GameObject[i].GetComponent<InitializeCollidable>());
