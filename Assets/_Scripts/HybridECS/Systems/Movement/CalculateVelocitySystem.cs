@@ -5,7 +5,7 @@ using Unity.Collections;
 namespace ProjectMecha
 {
     [UpdateInGroup(typeof(CalculatePosition))]
-    [UpdateAfter(typeof(PlayerInput))]
+    [UpdateAfter(typeof(PlayerMoveInput))]
     public class CalculateVelocitySystem : ComponentSystem
     {
         private struct Group
@@ -13,7 +13,7 @@ namespace ProjectMecha
             public int Length;
             public ComponentArray<Velocity> Velocity;
             public ComponentArray<Collidable> Collidable;
-            [ReadOnly] public ComponentArray<PlayerInput> PlayerInput;
+            [ReadOnly] public ComponentArray<PlayerMoveInput> PlayerInput;
         }
         [Inject] Group group;
 

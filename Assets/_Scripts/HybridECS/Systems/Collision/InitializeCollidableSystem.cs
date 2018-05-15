@@ -11,7 +11,6 @@ namespace ProjectMecha
         {
             public int Length;
             public EntityArray Entity;
-            public GameObjectArray GameObject;
             public ComponentArray<Collidable> Collidable;
             public ComponentArray<InitializeCollidable> InitializeGravity;
         }
@@ -27,7 +26,6 @@ namespace ProjectMecha
                 contactFilter2D.SetLayerMask(LayerManager.PlayerCollsionMask());
                 contactFilter2D.useLayerMask = true;
                 PostUpdateCommands.RemoveComponent<InitializeCollidable>(group.Entity[i]);
-                GameObject.Destroy(group.GameObject[i].GetComponent<InitializeCollidable>());
             }
         }
     }

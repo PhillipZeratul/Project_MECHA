@@ -3,7 +3,7 @@
 
 namespace ProjectMecha
 {
-    public class PlayerInput : MonoBehaviour
+    public class PlayerMoveInput : MonoBehaviour
     {
         public float Horizontal;
         public bool Jump;

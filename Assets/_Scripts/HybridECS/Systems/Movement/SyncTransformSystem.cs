@@ -50,12 +50,11 @@ namespace ProjectMecha
         private void SyncRotation2D(Rotation2D rotation, Transform transform)
         {
             rotation.LocalZ = transform.localEulerAngles.z;
-            rotation.GlobalZ = transform.eulerAngles.z;
         }
 
         private void SyncHeading2D(Heading2D heading, Transform transform)
         {
-            heading.IsRight = transform.localScale.x > 0;
+            heading.LocalIsRight = transform.localScale.x > 0;
         }
 
         private void SyncPosition(Transform transform, Position2D position)
@@ -66,12 +65,11 @@ namespace ProjectMecha
         private void SyncRotation(Transform transform, Rotation2D rotation)
         {
             transform.localRotation = Quaternion.Euler(transform.localRotation.x, transform.localRotation.y, rotation.LocalZ);
-            rotation.GlobalZ = transform.eulerAngles.z;
         }
 
         private void SyncScale(Transform transform, Heading2D heading)
         {
-            int headingSign = heading.IsRight ? 1 : -1;
+            int headingSign = heading.LocalIsRight ? 1 : -1;
             float3 oriScale = transform.localScale;
             transform.localScale = new Vector3(headingSign * math.abs(oriScale.x), oriScale.y, oriScale.z);
         }

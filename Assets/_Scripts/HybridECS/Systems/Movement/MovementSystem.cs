@@ -30,6 +30,8 @@ namespace ProjectMecha
 
                 group.Position[i].Local += velocity * deltaTime;
 
+                // [Deprecated] Use left or right key to change facing.
+                // Trying to change this to use aim position to change facing.
                 //if (velocity.x > 0)
                 //    group.Heading[i].IsRight = true;
                 //else if (velocity.x < 0)

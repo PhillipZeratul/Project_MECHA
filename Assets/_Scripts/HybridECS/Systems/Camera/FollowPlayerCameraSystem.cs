@@ -20,7 +20,7 @@ namespace ProjectMecha
         private struct PlayerData
         {
             public int Length;
-            public ComponentArray<PlayerInput> PlayerInput;
+            public ComponentArray<PlayerMoveInput> PlayerInput;
             public ComponentArray<Position2D> Position;
             public ComponentArray<Heading2D> Heading;
         }
@@ -36,7 +36,7 @@ namespace ProjectMecha
             {
                 float2 destination;
 
-                if (player.Heading[i].IsRight)
+                if (player.Heading[i].LocalIsRight)
                     destination.x = player.Position[i].Local.x + camera.Camera[i].leftBound;
                 else
                     destination.x = player.Position[i].Local.x - camera.Camera[i].rightBound;

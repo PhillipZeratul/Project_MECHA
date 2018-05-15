@@ -8,6 +8,6 @@ namespace ProjectMecha
     public class Heading2D : MonoBehaviour
     {
         //[HideInInspector]
-        public bool IsRight = true;
+        public bool LocalIsRight = true;
     }
 }
