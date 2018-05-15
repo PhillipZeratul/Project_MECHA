@@ -30,9 +30,9 @@ namespace ProjectMecha
                 Vector3 pBL = camera.Camera[i].ViewportToWorldPoint(new Vector3(leftBound, bottomBound, z));
                 Vector3 pBR = camera.Camera[i].ViewportToWorldPoint(new Vector3(rightBound, bottomBound, z));
 
-                camera.FollowPlayerCamera[i].leftBound = camera.Position[i].Value.x - pBL.x;
-                camera.FollowPlayerCamera[i].rightBound = pBR.x - camera.Position[i].Value.x;
-                camera.FollowPlayerCamera[i].bottomBound = camera.Position[i].Value.y - pBL.y;
+                camera.FollowPlayerCamera[i].leftBound = camera.Position[i].Local.x - pBL.x;
+                camera.FollowPlayerCamera[i].rightBound = pBR.x - camera.Position[i].Local.x;
+                camera.FollowPlayerCamera[i].bottomBound = camera.Position[i].Local.y - pBL.y;
 
                 DrawBounds(i, pBL, pBR);
             }

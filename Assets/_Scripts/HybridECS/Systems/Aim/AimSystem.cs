@@ -22,7 +22,7 @@ namespace ProjectMecha
         {
             for (int i = 0; i < group.Length; i++)
             {
-                group.Rotation[i].z = Mathf.Rad2Deg * math.atan2(group.Aim[i].Value.y - group.Position[i].Value.y, group.Aim[i].Value.x - group.Position[i].Value.x);
+                group.Rotation[i].GlobalZ = Mathf.Rad2Deg * math.atan2(group.Aim[i].Value.y - group.Position[i].Global.y, group.Aim[i].Value.x - group.Position[i].Global.x);
             }
         }
     }

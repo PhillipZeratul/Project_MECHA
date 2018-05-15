@@ -28,12 +28,12 @@ namespace ProjectMecha
             {
                 float2 velocity = group.Velocity[i].Value;
 
-                group.Position[i].Value += velocity * deltaTime;
+                group.Position[i].Local += velocity * deltaTime;
 
-                if (velocity.x > 0)
-                    group.Heading[i].isRight = true;
-                else if (velocity.x < 0)
-                    group.Heading[i].isRight = false;
+                //if (velocity.x > 0)
+                //    group.Heading[i].IsRight = true;
+                //else if (velocity.x < 0)
+                    //group.Heading[i].IsRight = false;
             }
         }
     }

@@ -47,7 +47,7 @@ namespace ProjectMecha
                     {
                         group.Velocity[i].Grounded = true;
                         group.Velocity[i].Value.y = 0f;
-                        group.Position[i].Value.y -= raycastHit2Ds[j].distance * raycastHit2Ds[j].normal.y;
+                        group.Position[i].Local.y -= raycastHit2Ds[j].distance * raycastHit2Ds[j].normal.y;
                     }
                     // Vertical Up Collision
                     else if (-raycastHit2Ds[j].normal.y > minCollideNormal && group.Velocity[i].Value.y > 0f)
@@ -55,7 +55,7 @@ namespace ProjectMecha
                         if (raycastHit2Ds[j].transform.gameObject.layer != LayerManager.Platform)
                         {
                             group.Velocity[i].Value.y = 0f;
-                            group.Position[i].Value.y -= raycastHit2Ds[j].distance * raycastHit2Ds[j].normal.y;
+                            group.Position[i].Local.y -= raycastHit2Ds[j].distance * raycastHit2Ds[j].normal.y;
                         }
                     }
                     // Horizontal Collision
@@ -64,7 +64,7 @@ namespace ProjectMecha
                         if (raycastHit2Ds[j].transform.gameObject.layer != LayerManager.Platform)
                         {
                             group.Velocity[i].Value.x = 0f;
-                            group.Position[i].Value.x -= raycastHit2Ds[j].distance * raycastHit2Ds[j].normal.x;
+                            group.Position[i].Local.x -= raycastHit2Ds[j].distance * raycastHit2Ds[j].normal.x;
                         }
                     }
                 }

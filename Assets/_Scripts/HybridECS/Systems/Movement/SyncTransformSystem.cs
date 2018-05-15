@@ -26,52 +26,54 @@ namespace ProjectMecha
             {
                 for (int i = 0; i < group.Length; i++)
                 {
-                    group.Position[i].Value = SyncPosition2D(group.Transform[i]);
-                    group.Rotation[i].z = SyncRotation2D(group.Transform[i]);
-                    group.Heading[i].isRight = SyncHeading2D(group.Transform[i]);
+                    SyncPosition2D(group.Position[i], group.Transform[i]);
+                    SyncRotation2D(group.Rotation[i], group.Transform[i]);
+                    SyncHeading2D(group.Heading[i], group.Transform[i]);
                 }
             }
             else
             {
                 for (int i = 0; i < group.Length; i++)
                 {
-                    group.Transform[i].position = SyncTransform(group.Position[i], group.Transform[i]);
-                    group.Transform[i].rotation = SyncRotation(group.Rotation[i], group.Transform[i]);
-                    group.Transform[i].localScale = SyncScale(group.Heading[i], group.Transform[i]);
+                    SyncPosition(group.Transform[i], group.Position[i]);
+                    SyncRotation(group.Transform[i], group.Rotation[i]);
+                    SyncScale(group.Transform[i], group.Heading[i]);
                 }
             }
         }
 
-        private float2 SyncPosition2D(Transform transform)
+        private void SyncPosition2D(Position2D position, Transform transform)
         {
-            return new float2(transform.position.x, transform.position.y);
+            position.Local = new float2(transform.localPosition.x, transform.localPosition.y);
         }
 
-        private float SyncRotation2D(Transform transform)
+        private void SyncRotation2D(Rotation2D rotation, Transform transform)
         {
-            return transform.eulerAngles.z;
+            rotation.LocalZ = transform.localEulerAngles.z;
+            rotation.GlobalZ = transform.eulerAngles.z;
         }
 
-        private bool SyncHeading2D(Transform transform)
+        private void SyncHeading2D(Heading2D heading, Transform transform)
         {
-            return transform.localScale.x > 0;
+            heading.IsRight = transform.localScale.x > 0;
         }
 
-        private Vector3 SyncTransform(Position2D position, Transform transform)
+        private void SyncPosition(Transform transform, Position2D position)
         {
-            return new Vector3(position.Value.x, position.Value.y, transform.position.z);
+            transform.localPosition = new Vector3(position.Local.x, position.Local.y, transform.localPosition.z);
         }
 
-        private Quaternion SyncRotation(Rotation2D rotation, Transform transform)
+        private void SyncRotation(Transform transform, Rotation2D rotation)
         {
-            return Quaternion.Euler(transform.localRotation.x, transform.localRotation.y, rotation.z);
+            transform.localRotation = Quaternion.Euler(transform.localRotation.x, transform.localRotation.y, rotation.LocalZ);
+            rotation.GlobalZ = transform.eulerAngles.z;
         }
 
-        private Vector3 SyncScale(Heading2D heading, Transform transform)
+        private void SyncScale(Transform transform, Heading2D heading)
         {
-            int headingSign = heading.isRight ? 1 : -1;
+            int headingSign = heading.IsRight ? 1 : -1;
             float3 oriScale = transform.localScale;
-            return new Vector3(headingSign * math.abs(oriScale.x), oriScale.y, oriScale.z);
+            transform.localScale = new Vector3(headingSign * math.abs(oriScale.x), oriScale.y, oriScale.z);
         }
     }
 }

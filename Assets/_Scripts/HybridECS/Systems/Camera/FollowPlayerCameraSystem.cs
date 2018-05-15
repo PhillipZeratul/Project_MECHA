@@ -36,13 +36,13 @@ namespace ProjectMecha
             {
                 float2 destination;
 
-                if (player.Heading[i].isRight)
-                    destination.x = player.Position[i].Value.x + camera.Camera[i].leftBound;
+                if (player.Heading[i].IsRight)
+                    destination.x = player.Position[i].Local.x + camera.Camera[i].leftBound;
                 else
-                    destination.x = player.Position[i].Value.x - camera.Camera[i].rightBound;
-                destination.y = player.Position[i].Value.y + camera.Camera[i].bottomBound;
+                    destination.x = player.Position[i].Local.x - camera.Camera[i].rightBound;
+                destination.y = player.Position[i].Local.y + camera.Camera[i].bottomBound;
 
-                float distanceSquared = math.lengthSquared(destination - camera.Position[i].Value);
+                float distanceSquared = math.lengthSquared(destination - camera.Position[i].Local);
 
                 if (distanceSquared > camera.Camera[i].lerpStartThres)              
                     camera.Camera[i].isLerping = true;
@@ -51,14 +51,14 @@ namespace ProjectMecha
                 {
                     if (distanceSquared < camera.Camera[i].lerpStopThres)
                     {
-                        camera.Position[i].Value = destination;
+                        camera.Position[i].Local = destination;
                         camera.Camera[i].isLerping = false;
                     }
                     else
-                        camera.Position[i].Value = math.lerp(camera.Position[i].Value, destination, camera.Camera[i].lerpSpeed);
+                        camera.Position[i].Local = math.lerp(camera.Position[i].Local, destination, camera.Camera[i].lerpSpeed);
                 }
                 else
-                    camera.Position[i].Value = destination;
+                    camera.Position[i].Local = destination;
             }
         }
     }
