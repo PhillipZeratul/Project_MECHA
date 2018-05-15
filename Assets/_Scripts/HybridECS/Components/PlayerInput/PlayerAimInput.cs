@@ -6,7 +6,7 @@ namespace ProjectMecha
 {
     public class PlayerAimInput : MonoBehaviour
     {
-        public float2 Aim;
+        public float2 AimPosition;
         public new Camera camera;
     }
 }

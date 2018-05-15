@@ -34,12 +34,11 @@ namespace ProjectMecha
 
             for (int i = 0; i < aimGroup.Length; i++)
             {
-                // How to Cache Camera.main?
                 Vector3 point = aimGroup.PlayerAimInput[i].camera.ScreenToWorldPoint(Input.mousePosition);
                 // TODO:~ Add Controller Aim Support
 
-                aimGroup.PlayerAimInput[i].Aim.x = point.x;
-                aimGroup.PlayerAimInput[i].Aim.y = point.y;
+                aimGroup.PlayerAimInput[i].AimPosition.x = point.x;
+                aimGroup.PlayerAimInput[i].AimPosition.y = point.y;
             }
         }
     }
