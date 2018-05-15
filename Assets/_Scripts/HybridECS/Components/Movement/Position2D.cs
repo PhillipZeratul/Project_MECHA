@@ -2,8 +2,13 @@
 using Unity.Mathematics;
 
 
-public class Position2D : MonoBehaviour
+namespace ProjectMecha
 {
-    //[HideInInspector]
-    public float2 Value;
+    [RequireComponent(typeof(Heading2D))]
+    [RequireComponent(typeof(Rotation2D))]
+    public class Position2D : MonoBehaviour
+    {
+        //[HideInInspector]
+        public float2 Value;
+    }
 }

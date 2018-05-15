@@ -5,9 +5,8 @@ namespace ProjectMecha
 {
     [RequireComponent(typeof(Position2D))]
     [RequireComponent(typeof(Rotation2D))]
-    public class Heading2D : MonoBehaviour
+    public class Rotation2D : MonoBehaviour
     {
-        //[HideInInspector]
-        public bool isRight = true;
+        public float z;
     }
 }
