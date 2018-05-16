@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace ProjectMecha
 {
+    [UpdateInGroup(typeof(CalculatePosition))]
     [UpdateBefore(typeof(PlayerInputSystem))]
     public class InitializePlayerAimInputSystem : ComponentSystem
     {

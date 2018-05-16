@@ -36,10 +36,12 @@ namespace ProjectMecha
             {
                 float2 destination;
 
-                if (player.Heading[i].LocalIsRight)
+                if (player.Heading[i].Value == Heading.Right)
                     destination.x = player.Position[i].Local.x + camera.Camera[i].leftBound;
-                else
+                else if (player.Heading[i].Value == Heading.Left)
                     destination.x = player.Position[i].Local.x - camera.Camera[i].rightBound;
+                else
+                    destination.x = player.Position[i].Local.x;
                 destination.y = player.Position[i].Local.y + camera.Camera[i].bottomBound;
 
                 float distanceSquared = math.lengthSquared(destination - camera.Position[i].Local);

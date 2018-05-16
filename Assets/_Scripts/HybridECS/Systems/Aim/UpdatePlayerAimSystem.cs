@@ -4,6 +4,8 @@ using Unity.Collections;
 
 namespace ProjectMecha
 {
+    [UpdateInGroup(typeof(CalculatePosition))]
+    [UpdateBefore(typeof(AimSystem))]
     public class UpdatePlayerAimSystem : ComponentSystem
     {
         private struct Group
@@ -19,7 +21,7 @@ namespace ProjectMecha
         {
             for (int i = 0; i < group.Length; i++)
             {
-                group.Aim[i].Value = group.PlayerAimInput[i].AimPosition;
+                group.Aim[i].Position = group.PlayerAimInput[i].AimPosition;
             }
         }
     }

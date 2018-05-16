@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace ProjectMecha
 {
+    [UpdateInGroup(typeof(CalculatePosition))]
     public class AimSystem : ComponentSystem
     {
         private struct Group
@@ -22,7 +23,8 @@ namespace ProjectMecha
         {
             for (int i = 0; i < group.Length; i++)
             {
-                group.Rotation[i].GlobalZ = Mathf.Rad2Deg * math.atan2(group.Aim[i].Value.y - group.Position[i].Global.y, group.Aim[i].Value.x - group.Position[i].Global.x);
+                group.Aim[i].RotationZ = Mathf.Rad2Deg * math.atan2(group.Aim[i].Position.y - group.Position[i].Global.y, group.Aim[i].Position.x - group.Position[i].Global.x);
+                group.Rotation[i].GlobalZ = group.Aim[i].RotationZ;
             }
         }
     }

@@ -4,7 +4,7 @@
 namespace ProjectMecha
 {
     [RequireComponent(typeof(Position2D))]
-    [RequireComponent(typeof(Rotation2D))]
+    [RequireComponent(typeof(Heading2D))]
     public class Rotation2D : MonoBehaviour
     {
         public float LocalZ;

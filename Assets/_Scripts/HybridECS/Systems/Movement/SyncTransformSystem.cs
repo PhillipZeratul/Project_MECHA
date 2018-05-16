@@ -15,7 +15,6 @@ namespace ProjectMecha
             public ComponentArray<Transform> Transform;
             public ComponentArray<Position2D> Position;
             public ComponentArray<Rotation2D> Rotation;
-            public ComponentArray<Heading2D> Heading;
         }
         [Inject] private GroupWithHeading group;
 
@@ -28,7 +27,6 @@ namespace ProjectMecha
                 {
                     SyncPosition2D(group.Position[i], group.Transform[i]);
                     SyncRotation2D(group.Rotation[i], group.Transform[i]);
-                    SyncHeading2D(group.Heading[i], group.Transform[i]);
                 }
             }
             else
@@ -37,7 +35,6 @@ namespace ProjectMecha
                 {
                     SyncPosition(group.Transform[i], group.Position[i]);
                     SyncRotation(group.Transform[i], group.Rotation[i]);
-                    SyncScale(group.Transform[i], group.Heading[i]);
                 }
             }
         }
@@ -52,11 +49,6 @@ namespace ProjectMecha
             rotation.LocalZ = transform.localEulerAngles.z;
         }
 
-        private void SyncHeading2D(Heading2D heading, Transform transform)
-        {
-            heading.LocalIsRight = transform.localScale.x > 0;
-        }
-
         private void SyncPosition(Transform transform, Position2D position)
         {
             transform.localPosition = new Vector3(position.Local.x, position.Local.y, transform.localPosition.z);
@@ -65,13 +57,6 @@ namespace ProjectMecha
         private void SyncRotation(Transform transform, Rotation2D rotation)
         {
             transform.localRotation = Quaternion.Euler(transform.localRotation.x, transform.localRotation.y, rotation.LocalZ);
-        }
-
-        private void SyncScale(Transform transform, Heading2D heading)
-        {
-            int headingSign = heading.LocalIsRight ? 1 : -1;
-            float3 oriScale = transform.localScale;
-            transform.localScale = new Vector3(headingSign * math.abs(oriScale.x), oriScale.y, oriScale.z);
         }
     }
 }

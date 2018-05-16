@@ -8,6 +8,13 @@ namespace ProjectMecha
     public class Heading2D : MonoBehaviour
     {
         //[HideInInspector]
-        public bool LocalIsRight = true;
+        public Heading Value = Heading.Right;
+    }
+
+    public enum Heading
+    {
+        Right,
+        Front,
+        Left
     }
 }
