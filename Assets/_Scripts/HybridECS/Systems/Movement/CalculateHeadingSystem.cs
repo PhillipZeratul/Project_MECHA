@@ -36,8 +36,6 @@ namespace ProjectMecha
 
             for (int i = 0; i < moveGroup.Length; i++)
             {
-                //Debug.LogFormat("angle = {0}", aimGroup.Aim[i].RotationZ);
-
                 if (math.abs(aimGroup.Aim[i].RotationZ) < cutOffAngle)
                 {
                     moveGroup.Heading[i].Value = Heading.Right;
