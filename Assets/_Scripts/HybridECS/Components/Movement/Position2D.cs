@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using Unity.Mathematics;
+using Unity.Entities;
 
 
 namespace ProjectMecha
 {
+    [RequireComponent(typeof(GameObjectEntity))]
     [RequireComponent(typeof(Heading2D))]
     [RequireComponent(typeof(Rotation2D))]
     public class Position2D : MonoBehaviour

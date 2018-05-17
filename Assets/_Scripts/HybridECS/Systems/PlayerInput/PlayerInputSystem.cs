@@ -13,14 +13,22 @@ namespace ProjectMecha
             public int Length;
             [ReadOnly] public ComponentArray<PlayerMoveInput> PlayerMoveInput;
         }
-        [Inject] private MoveGroup moveGroup;
 
         private struct AimGroup
         {
             public int Length;
             [ReadOnly] public ComponentArray<PlayerAimInput> PlayerAimInput;
         }
+
+        private struct FireGroup
+        {
+            public int Length;
+            public ComponentArray<PlayerFireInput> PlayerFireInput;
+        }
+
+        [Inject] private MoveGroup moveGroup;
         [Inject] private AimGroup aimGroup;
+        [Inject] private FireGroup fireGroup;
 
 
         protected override void OnUpdate()
@@ -34,11 +42,18 @@ namespace ProjectMecha
 
             for (int i = 0; i < aimGroup.Length; i++)
             {
-                Vector3 point = aimGroup.PlayerAimInput[i].camera.ScreenToWorldPoint(Input.mousePosition);
+                Vector3 point = aimGroup.PlayerAimInput[i].Camera.ScreenToWorldPoint(Input.mousePosition);
                 // TODO:~ Add Controller Aim Support
 
                 aimGroup.PlayerAimInput[i].AimPosition.x = point.x;
                 aimGroup.PlayerAimInput[i].AimPosition.y = point.y;
+            }
+
+            for (int i = 0; i < fireGroup.Length; i++)
+            {
+                fireGroup.PlayerFireInput[i].IsFiringGun = Input.GetButton("Fire1");
+                fireGroup.PlayerFireInput[i].IsFiringRocket = Input.GetButton("Fire2");
+                fireGroup.PlayerFireInput[i].IsMelee = Input.GetButton("Fire3");
             }
         }
     }

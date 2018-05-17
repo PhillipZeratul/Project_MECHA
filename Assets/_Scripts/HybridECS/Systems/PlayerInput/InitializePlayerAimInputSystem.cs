@@ -22,7 +22,7 @@ namespace ProjectMecha
         {
             for (int i = 0; i < group.Length; i++)
             {
-                group.PlayerAimInput[i].camera = Camera.main;
+                group.PlayerAimInput[i].Camera = Camera.main;
                 EntityManager.RemoveComponent<InitializePlayerAimInput>(group.Entity[i]);
             }
         }
