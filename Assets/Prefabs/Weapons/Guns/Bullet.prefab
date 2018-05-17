@@ -73,6 +73,7 @@ MonoBehaviour:
   TimeToLive: 5
   Energy: 1
   CoolDown: 0.2
+  Speed: 10
 --- !u!114 &114669947004869300
 MonoBehaviour:
   m_ObjectHideFlags: 1
