@@ -37,7 +37,7 @@ namespace ProjectMecha
                         Faction = Faction.Type.Player
                     };
 
-                    ShotSpawnSystem.SpawnShot(weapon.Gun.gameObject, shotSpawnData);
+                    ShotSpawnSystem.SpawnShot(weapon.Gun, shotSpawnData);
                 }
                 else
                     fireInput.GunCoolDown = math.max(fireInput.GunCoolDown - deltaTime, 0f);

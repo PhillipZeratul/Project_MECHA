@@ -5,17 +5,12 @@ namespace ProjectMecha
 {
     [RequireComponent(typeof(Position2D))]
     [RequireComponent(typeof(Faction))]
-    public class Gun : MonoBehaviour
+    [RequireComponent(typeof(Velocity))]
+    public class GunBase : MonoBehaviour
     {
-    	public enum Type
-        {
-            Bullet,
-            Laser
-        }
-
-        public Type Value;
         public float TimeToLive;
         public float Energy;
         public float CoolDown;
+        public float Speed;
     }
 }

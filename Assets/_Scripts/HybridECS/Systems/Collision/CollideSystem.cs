@@ -15,6 +15,7 @@ namespace ProjectMecha
             public int Length;
             public ComponentArray<Rigidbody2D> RigidBody;
             public ComponentArray<Position2D> Position;
+            public ComponentArray<Gravity> Gravity;
             [ReadOnly] public ComponentArray<Collidable> Collidable;
             [ReadOnly] public ComponentArray<Velocity> Velocity;
         }
@@ -45,7 +46,7 @@ namespace ProjectMecha
                     // Vertical Down Collision
                     if (raycastHit2Ds[j].normal.y > minCollideNormal && group.Velocity[i].Value.y < 0f)
                     {
-                        group.Velocity[i].Grounded = true;
+                        group.Gravity[i].Grounded = true;
                         group.Velocity[i].Value.y = 0f;
                         group.Position[i].Local.y -= raycastHit2Ds[j].distance * raycastHit2Ds[j].normal.y;
                     }
@@ -70,7 +71,7 @@ namespace ProjectMecha
                 }
 
                 if (!CommonUtility.NearlyEqual(group.Velocity[i].Value.y, 0f))
-                    group.Velocity[i].Grounded = false;
+                    group.Gravity[i].Grounded = false;
             }
         }
     }

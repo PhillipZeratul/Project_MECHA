@@ -6,5 +6,6 @@ namespace ProjectMecha
     public class Gravity : MonoBehaviour
     {
         public float Modifier = 1f;
+        public bool Grounded = false;
     }
 }

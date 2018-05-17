@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Unity.Mathematics;
 
 
 namespace ProjectMecha
@@ -13,7 +14,7 @@ namespace ProjectMecha
 
     public static class ShotSpawnSystem
     {
-        public static void SpawnShot(GameObject shot, ShotSpawnData data)
+        public static void SpawnShot(GunBase shot, ShotSpawnData data)
         {
             var newShot = Object.Instantiate(shot);
 
@@ -23,6 +24,9 @@ namespace ProjectMecha
             shotRotation.GlobalZ = data.Rotation.GlobalZ;
             var faction = newShot.GetComponent<Faction>();
             faction.Value = data.Faction;
+            var velocity = newShot.GetComponent<Velocity>();
+            velocity.Value.x = math.cos(Mathf.Deg2Rad * data.Rotation.GlobalZ) * shot.Speed;
+            velocity.Value.y = math.sin(Mathf.Deg2Rad * data.Rotation.GlobalZ) * shot.Speed;
         }
     }
 }
