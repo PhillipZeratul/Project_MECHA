@@ -1,15 +1,20 @@
 ﻿using UnityEngine;
 
 
-public class Rocket : MonoBehaviour
+namespace ProjectMecha
 {
-	public enum Type
+    [RequireComponent(typeof(Position2D))]
+    [RequireComponent(typeof(Faction))]
+    public class Rocket : MonoBehaviour
     {
-        Straight,
-        Follow
-    }
+    	public enum Type
+        {
+            Straight,
+            Follow
+        }
 
-    public Type Value;
-    public float TimeToLive;
-    public float Energy;
+        public Type Value;
+        public float TimeToLive;
+        public float Energy;
+    }
 }

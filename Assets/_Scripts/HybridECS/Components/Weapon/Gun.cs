@@ -1,15 +1,21 @@
 ﻿using UnityEngine;
 
 
-public class Gun : MonoBehaviour
+namespace ProjectMecha
 {
-	public enum Type
+    [RequireComponent(typeof(Position2D))]
+    [RequireComponent(typeof(Faction))]
+    public class Gun : MonoBehaviour
     {
-        Bullet,
-        Laser
-    }
+    	public enum Type
+        {
+            Bullet,
+            Laser
+        }
 
-    public Type Value;
-    public float TimeToLive;
-    public float Energy;
+        public Type Value;
+        public float TimeToLive;
+        public float Energy;
+        public float CoolDown;
+    }
 }

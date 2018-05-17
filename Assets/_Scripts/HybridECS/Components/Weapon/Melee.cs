@@ -10,4 +10,6 @@ public class Melee : MonoBehaviour
     }
 
     public Type Value;
+    public float TimeToLive;
+    public float Energy;
 }

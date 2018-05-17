@@ -5,7 +5,7 @@ namespace ProjectMecha
 {
     public class Weapon : MonoBehaviour
     {
-        public Gun Bullet;
+        public Gun Gun;
         public Position2D GunPointPosition;
         public Rotation2D GunPointRotation;
 

@@ -40,20 +40,24 @@ namespace ProjectMecha
                 moveGroup.PlayerMoveInput[i].Jump = Input.GetButtonDown("Jump");
             }
 
+            // TODO:~ Add Controller Aim Support
             for (int i = 0; i < aimGroup.Length; i++)
             {
                 Vector3 point = aimGroup.PlayerAimInput[i].Camera.ScreenToWorldPoint(Input.mousePosition);
-                // TODO:~ Add Controller Aim Support
 
                 aimGroup.PlayerAimInput[i].AimPosition.x = point.x;
                 aimGroup.PlayerAimInput[i].AimPosition.y = point.y;
             }
 
+            // TODO:~ Add Controller Fire Support, in Input Manager
             for (int i = 0; i < fireGroup.Length; i++)
             {
-                fireGroup.PlayerFireInput[i].IsFiringGun = Input.GetButton("Fire1");
-                fireGroup.PlayerFireInput[i].IsFiringRocket = Input.GetButton("Fire2");
-                fireGroup.PlayerFireInput[i].IsMelee = Input.GetButton("Fire3");
+                var fireInput = fireGroup.PlayerFireInput[i];
+
+                fireInput.IsFiringGun = CommonUtility.NearlyEqual(fireInput.GunCoolDown, 0f) && Input.GetButton("Gun");
+                fireInput.IsFiringRocket = CommonUtility.NearlyEqual(fireInput.RocketCoolDown, 0f) && Input.GetButton("Rocket");
+                fireInput.IsMelee = CommonUtility.NearlyEqual(fireInput.MeleeCoolDown, 0f) && Input.GetButton("Melee");
+                fireInput.IsSheild = Input.GetButton("Shield");
             }
         }
     }
