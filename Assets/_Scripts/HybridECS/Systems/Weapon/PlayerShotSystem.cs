@@ -12,7 +12,7 @@ namespace ProjectMecha
         {
             public int Length;
             public ComponentArray<PlayerFireInput> PlayerFireInput;
-            public ComponentArray<Weapon> Weapon;
+            public ComponentArray<EquipedWeapon> Weapon;
         }
         [Inject] private Group group;
 
