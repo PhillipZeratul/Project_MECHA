@@ -6,6 +6,7 @@
 # Unity3D related
 !/Assets
 !/ProjectSettings
+!/Packages
 *.unitypackage
 
 
